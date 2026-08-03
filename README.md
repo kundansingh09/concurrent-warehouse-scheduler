@@ -14,9 +14,9 @@ This engine is built on enterprise-grade OS and Concurrency concepts, designed t
 * **Kahn's Algorithm:** Tasks are modeled as a Directed Acyclic Graph (DAG). Before execution begins, the system mathematically verifies that no cyclic dependencies exist (e.g., Task A waiting on Task B, while Task B waits on Task A). If a cycle is detected, the boot sequence aborts to prevent a system-wide freeze.
 * **O(Children) Unlocking:** Upon task completion, only direct child dependencies are evaluated, bypassing heavy O(N) graph rescans.
 
-### 2. Custom ThreadPool & Priority Preemption
-* Replaces standard FIFO queues with a **Priority-Based Preemption Queue** (`std::priority_queue`). 
-* High-priority shipping tasks immediately preempt standard fetch tasks across a highly concurrent pool of OS-level worker threads.
+### 2. Custom ThreadPool & Priority-Based Scheduling
+* Replaces standard FIFO queues with a **Priority Queue** (`std::priority_queue`). 
+* High-priority shipping tasks bypass standard fetch tasks in the queue, ensuring critical workflows are scheduled next by available OS-level worker threads. (Note: Actively running tasks are not preempted).
 
 ### 3. Resource Contention & Physical Deadlock Avoidance
 * **Centralized ResourceManager:** Individual aisles and loading bays are protected by striped mutex locks.

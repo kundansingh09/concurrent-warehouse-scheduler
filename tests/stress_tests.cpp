@@ -24,6 +24,8 @@ int main() {
     cout << "\n=================================================\n";
     cout << "    EXTREME CHAOS STRESS TEST (10,000 Tasks)     \n";
     cout << "=================================================\n";
+    
+    srand(static_cast<unsigned int>(time(nullptr)));
 
     TaskGraph graph;
     int total_tasks = 10000;
@@ -32,7 +34,6 @@ int main() {
         graph.addTask(make_shared<ChaosTask>(i, rand() % 3));
     }
     
-    srand(static_cast<unsigned int>(time(nullptr)));
     for (int i = 2; i <= total_tasks; i++) {
         int num_dependencies = (rand() % 5);
         for (int d = 0; d < num_dependencies; d++) {

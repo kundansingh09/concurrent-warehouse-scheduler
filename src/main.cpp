@@ -8,6 +8,7 @@
 #include "../include/concurrency/Scheduler.h"
 #include "../include/tasks/FetchTask.h"
 #include "../include/tasks/PackTask.h"
+#include "../include/tasks/RelocateTask.h"
 
 using namespace std;
 
@@ -105,6 +106,32 @@ int main() {
             graph.addDependency(fetch_id, current_pack_id);
         }
     }
+
+    // INJECT RELOCATE TASK (Multi-Resource Demo)
+    char include_relocate;
+    cout << "\nInclude a background 'RelocateTask' to demonstrate multi-resource lock contention? (y/n): ";
+    cin >> include_relocate;
+
+    if (include_relocate == 'y' || include_relocate == 'Y') {
+        int relocate_id = task_id_counter++;
+        
+        // We force it to lock Aisle 1 and Aisle 2 to compete directly with Smartphones and Laptops
+        auto relocate_task = make_shared<RelocateTask>(
+            relocate_id, 
+            "Restock Heavy Pallet", 
+            2, 
+            catalog[1].location,
+            catalog[2].location 
+        );
+        
+        graph.addTask(relocate_task);
+        total_tasks_created++;
+        
+        all_pack_task_ids.push_back(relocate_id); 
+        
+        cout << "  -> Scheduled RelocateTask (ID: " << relocate_id << ") between Aisle 1 and Aisle 2.\n";
+    }
+
 
     // 3. Create the final ShipTask that waits for ALL PackTasks
     cout << "\n[System] Compiling dispatch dependencies...\n";

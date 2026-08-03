@@ -1,6 +1,6 @@
 # Concurrent Warehouse Task Scheduler
 
-![C++17](https://img.shields.io/badge/C++-17-blue.svg) ![CMake](https://img.shields.io/badge/CMake-3.10+-green.svg) ![Concurrency](https://img.shields.io/badge/Concurrency-ThreadPool-orange.svg) ![License](https://img.shields.io/badge/License-MIT-purple.svg)
+![C++17](https://img.shields.io/badge/C++-17-blue.svg) ![CMake](https://img.shields.io/badge/Concurrency-ThreadPool-orange.svg) ![License](https://img.shields.io/badge/License-MIT-purple.svg)
 
 A high-performance, multithreaded task execution engine simulating a modern distributed Warehouse Management System (WMS). Engineered to handle highly concurrent robot routing, resource contention, and fault-tolerant DAG (Directed Acyclic Graph) resolution.
 

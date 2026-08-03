@@ -55,7 +55,7 @@ The logs are ANSI color-coded for instant dashboard readability:
 
 ---
 
-## 🛠️ Build & Run Instructions
+## Build & Run Instructions
 
 This project uses **CMake** for cross-platform building and has been audited against data races using **ThreadSanitizer (TSan)**.
 
@@ -91,4 +91,4 @@ We utilize a structured Testing Pyramid. Run these directly from your `build/` d
 
 ## License
 
-This project is licensed under the MIT License. You are free to use, modify, and distribute this software, provided that the original copyright and license notice are included in any copies or substantial portions of the software.
+This project is open-source and available under the [MIT License](LICENSE).

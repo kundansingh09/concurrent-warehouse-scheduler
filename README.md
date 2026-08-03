@@ -92,5 +92,3 @@ We utilize a structured Testing Pyramid. Run these directly from your `build/` d
 ## License
 
 This project is licensed under the MIT License. You are free to use, modify, and distribute this software, provided that the original copyright and license notice are included in any copies or substantial portions of the software.
-
-*Developed by Kundansingh Shekhawat*
